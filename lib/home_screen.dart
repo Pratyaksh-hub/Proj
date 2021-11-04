@@ -50,20 +50,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     alignment: Alignment.center,
                     child: CircularProgressIndicator(),
                   )
-                : ListView.builder(
-                    itemCount: 1,
-                    itemBuilder: (context, index) {
-                      return AllDetails(
-                        textComponent: HomeScreen.details["components"][1]
-                            ["title"],
-                        imageComponent: HomeScreen.details["components"][0]
-                            ["url"],
-                        description: HomeScreen.details["components"][1]
-                            ["desc"],
-                        headerImage: HomeScreen.details["coverUrl"],
-                        headerTitle: HomeScreen.details["title"],
-                      );
-                    },
+                : Scrollbar(
+                    child: ListView.builder(
+                      itemCount: 1,
+                      itemBuilder: (context, index) {
+                        return AllDetails(
+                          textComponent: HomeScreen.details["components"][1]
+                              ["title"],
+                          imageComponent: HomeScreen.details["components"][0]
+                              ["url"],
+                          description: HomeScreen.details["components"][1]
+                              ["desc"],
+                          headerImage: HomeScreen.details["coverUrl"],
+                          headerTitle: HomeScreen.details["title"],
+                        );
+                      },
+                    ),
                   ),
           ),
         ],
