@@ -50,21 +50,34 @@ class _HomeScreenState extends State<HomeScreen> {
                     alignment: Alignment.center,
                     child: CircularProgressIndicator(),
                   )
-                : Scrollbar(
-                    child: ListView.builder(
-                      itemCount: 1,
-                      itemBuilder: (context, index) {
-                        return AllDetails(
-                          textComponent: HomeScreen.details["components"][1]
-                              ["title"],
-                          imageComponent: HomeScreen.details["components"][0]
-                              ["url"],
-                          description: HomeScreen.details["components"][1]
-                              ["desc"],
-                          headerImage: HomeScreen.details["coverUrl"],
-                          headerTitle: HomeScreen.details["title"],
-                        );
-                      },
+                : Theme(
+                    data: Theme.of(context).copyWith(
+                      scrollbarTheme: ScrollbarThemeData(
+                        crossAxisMargin: 30,
+                        trackBorderColor:
+                            MaterialStateProperty.all(Colors.grey),
+                        trackColor: MaterialStateProperty.all(Colors.grey),
+                        thumbColor: MaterialStateProperty.all(Colors.white),
+                      ),
+                    ),
+                    child: Scrollbar(
+                      isAlwaysShown: true,
+                      showTrackOnHover: true,
+                      child: ListView.builder(
+                        itemCount: 1,
+                        itemBuilder: (context, index) {
+                          return AllDetails(
+                            textComponent: HomeScreen.details["components"][1]
+                                ["title"],
+                            imageComponent: HomeScreen.details["components"][0]
+                                ["url"],
+                            description: HomeScreen.details["components"][1]
+                                ["desc"],
+                            headerImage: HomeScreen.details["coverUrl"],
+                            headerTitle: HomeScreen.details["title"],
+                          );
+                        },
+                      ),
                     ),
                   ),
           ),
